@@ -1,0 +1,1 @@
+(()=>{"use strict";document.querySelector("h1").textContent="changed by js!",new class{constructor(){this.test="test"}},console.log(8)})();

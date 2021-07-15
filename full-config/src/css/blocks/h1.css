@@ -1,0 +1,15 @@
+@font-face {
+  font-weight: 300;
+  font-style: normal;
+  font-family: "Open Sans";
+  src:
+    url("/src/fonts/open-sans-300.woff") format("woff");
+  font-display: swap;
+}
+
+h1 {
+  font-family: 'Open Sans';
+  color: burlywood;
+  background-color: #fff;
+  user-select: none;
+}

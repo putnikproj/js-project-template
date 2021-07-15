@@ -12,7 +12,7 @@ module.exports = (env, argv) => {
       path: path.resolve(__dirname, './dist'),
       filename: isProd ? 'js/[name].[contenthash:6].bundle.js' : 'js/[name].bundle.js',
       publicPath: '',
-      clean: isProd
+      clean: isProd,
     },
     target: isProd ? 'browserslist' : 'web',
     devServer: {
@@ -20,18 +20,20 @@ module.exports = (env, argv) => {
       watchContentBase: true,
       compress: true,
       hot: !isProd,
-      overlay: !isProd
+      overlay: !isProd,
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: './src/html/index.html',
-        scriptLoading: 'blocking'
+        scriptLoading: 'blocking',
       }),
-      ...isProd
-        ? [new MiniCssExtractPlugin({
-          filename: isProd ? 'css/[name].[contenthash:6].bundle.css' : 'css/[name].bundle.css'
-        })]
-        : []
+      ...(isProd
+        ? [
+            new MiniCssExtractPlugin({
+              filename: isProd ? 'css/[name].[contenthash:6].bundle.css' : 'css/[name].bundle.css',
+            }),
+          ]
+        : []),
     ],
     module: {
       rules: [
@@ -39,48 +41,50 @@ module.exports = (env, argv) => {
           test: /\.js$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader'
-          }
+            loader: 'babel-loader',
+          },
         },
         {
           test: /\.css$/,
           use: [
-            isProd ? {
-              loader: MiniCssExtractPlugin.loader,
-              options: {
-                publicPath: '../'
-              }
-            } : 'style-loader',
+            isProd
+              ? {
+                  loader: MiniCssExtractPlugin.loader,
+                  options: {
+                    publicPath: '../',
+                  },
+                }
+              : 'style-loader',
             'css-loader',
-            ...isProd ? ['postcss-loader'] : []
-          ]
+            ...(isProd ? ['postcss-loader'] : []),
+          ],
         },
         {
           test: /\.html$/,
-          loader: 'html-loader'
+          loader: 'html-loader',
         },
         {
           test: /\.(png|jpe?g|gif|svg|webp)$/,
           type: 'asset/resource',
           generator: {
-            filename: isProd ? 'img/[name].[contenthash:6][ext]' : 'img/[name][ext]'
-          }
+            filename: isProd ? 'img/[name].[contenthash:6][ext]' : 'img/[name][ext]',
+          },
         },
         {
           test: /\.(woff2?)$/,
           type: 'asset/resource',
           generator: {
-            filename: isProd ? 'fonts/[name].[contenthash:6][ext]' : 'fonts/[name][ext]'
-          }
+            filename: isProd ? 'fonts/[name].[contenthash:6][ext]' : 'fonts/[name][ext]',
+          },
         },
         {
           test: /favicon\.ico$/,
           type: 'asset/resource',
           generator: {
-            filename: '[name][ext]'
-          }
-        }
-      ]
-    }
+            filename: '[name][ext]',
+          },
+        },
+      ],
+    },
   };
 };

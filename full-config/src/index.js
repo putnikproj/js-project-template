@@ -1,4 +1,4 @@
-import './js/style';
+import './css/index.css';
 import { log } from './js/modules/module';
 
 log();

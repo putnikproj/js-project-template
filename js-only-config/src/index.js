@@ -6,8 +6,11 @@ class Test {
   constructor() {
     this.test = 'test';
   }
+
+  log() {
+    console.log(this.test);
+  }
 }
 
-new Test;
-
-console.log(8);
+const test = new Test();
+test.log();

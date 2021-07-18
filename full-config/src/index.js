@@ -1,14 +1,17 @@
-import './js/style.js';
+import './js/style';
 import { log } from './js/modules/module';
-
-class NewClass {
-  constructor(str) {
-    this.str = str;
-  }
-}
-
-console.log(new NewClass('str'));
 
 log();
 
-console.log(8);
+class Test {
+  constructor() {
+    this.test = 'test';
+  }
+
+  log() {
+    console.log(this.test);
+  }
+}
+
+const test = new Test();
+test.log();

@@ -4,6 +4,7 @@
   "description": "Vanilla js project template",
   "private": "true",
   "main": "index.js",
+  "browserslist": "> 0.5%, not dead",
   "scripts": {
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix",

@@ -14,4 +14,5 @@ module.exports = {
     'prettier/prettier': 2,
     'import/no-extraneous-dependencies': [2, { devDependencies: true }],
   },
+  root: true,
 };
